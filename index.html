@@ -88,7 +88,7 @@
 							text-anchor="end"
 							fill="#fff" stroke="none"
 							font-size="${fontSize}"
-							transform ="translate(${x - 4},${y - 4})">${w}x${h}</text>`;
+							transform ="translate(${x - 4},${y - 4})">${data[i].name} ${data[i].aspectRatio} ${w}x${h}</text>`;
 			}
 			// display
 			svg.innerHTML = output;
