@@ -1,4 +1,4 @@
 
 # Display Resolutions
 
-<img src="displays.svg" width="600">
+<img src="displays.svg" width="700">
