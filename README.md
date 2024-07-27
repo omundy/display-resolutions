@@ -1,2 +1,4 @@
-# display-resolutions
- 
+
+# Display Resolutions
+
+<img src="displays.svg" width="600">

@@ -1,0 +1,142 @@
+html,
+body {
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #22252C;
+	font-family: system-ui;
+}
+
+svg text {
+	/* font: 32px sans-serif; */
+	color: #fff;
+}
+
+.controls {
+	position: absolute;
+	z-index: 999;
+	background-color: rgba(255, 255, 255, .1);
+	color: #ccc;
+	padding: 5px;
+	margin: 12px;
+	border-radius: 3px;
+}
+
+
+.controls h5 {
+	margin: 0;
+	margin-top: 6px;
+	font-weight: normal;
+	font-size: 12px;
+}
+
+.controls label {
+	display: inline-block;
+	width: 1.6rem;
+	text-align: left;
+	padding-right: 3px;
+	font-size: 12px;
+}
+
+.controls .val {
+	border: 0;
+	border-radius: 10%;
+	background-color: rgba(255, 255, 255, .1);
+	/* background-color: transparent; */
+	color: #ccc;
+	padding: 3px;
+	max-width: 1.5rem;
+	text-align: left;
+	margin-bottom: 4px;
+}
+
+
+
+:root {
+	--range-height: 14px;
+	--range-border-radius: 18px;
+	--range-background: #7f7f7f;
+	--range-foreground: #696969;
+	--range-shadow: #cacaca;
+	--range-border: 2px;
+}
+
+button {
+	background-color: transparent;
+	border: none;
+	color: var(--range-shadow);
+	padding: 3px 5px;
+	border: 1px solid var(--range-shadow);
+	border-radius: .25rem;
+	text-align: center;
+	text-decoration: none;
+	margin: .25rem 0 0 0;
+}
+
+select {
+	background-color: var(--range-background);
+	border-radius: 1rem;
+	padding: 2px 5px;
+}
+
+
+/* Improve range input
+        Source(s)
+        https://blog.logrocket.com/creating-custom-css-range-slider-javascript-upgrades/ 
+        https://range-input-css.netlify.app/
+        */
+
+input[type="range"] {
+	/* removing default appearance */
+	-webkit-appearance: none;
+	appearance: none;
+	background: transparent;
+	cursor: pointer;
+	outline: none;
+	/* creating a custom design */
+	margin: 3px 6px;
+	width: 6rem;
+	/*  slider progress trick  */
+	overflow: hidden;
+	border-radius: var(--range-border-radius);
+}
+
+/* Track: webkit browsers */
+input[type="range"]::-webkit-slider-runnable-track {
+	height: var(--range-height);
+	background: var(--range-background);
+	border-radius: var(--range-border-radius);
+}
+
+/* Track: Mozilla Firefox */
+input[type="range"]::-moz-range-track {
+	height: var(--range-height);
+	background: var(--range-background);
+	border-radius: var(--range-border-radius);
+}
+
+/* Thumb: webkit */
+input[type="range"]::-webkit-slider-thumb {
+	/* removing default appearance */
+	-webkit-appearance: none;
+	appearance: none;
+	/* creating a custom design */
+	height: var(--range-height);
+	width: var(--range-height);
+	background-color: var(--range-foreground);
+	border-radius: 50%;
+	border: 2px solid var(--range-shadow);
+	/*  slider progress trick  */
+	box-shadow: -407px 0 0 400px var(--range-shadow);
+}
+
+/* Thumb: Firefox */
+input[type="range"]::-moz-range-thumb {
+	height: var(--range-height);
+	width: var(--range-height);
+	background-color: var(--range-foreground);
+	border-radius: 50%;
+	border: 1px solid var(--range-shadow);
+	/*  slider progress trick  */
+	box-shadow: -407px 0 0 400px var(--range-shadow);
+}
