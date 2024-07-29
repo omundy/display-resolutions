@@ -1,0 +1,49 @@
+pixels	name	aspectFraction	aspectRatio	w2h	megapixels
+
+
+320x480	iPhone 3Gs 	0	3:4	.66
+640x960	iPhone 4 	0	3:4	.66
+
+640x1136	iPhone SE (gen 1)	0	9:16	0.563
+640x1136	iPhone 5	0	9:16	0.563
+
+750x1334	iPhone SE (gen 2)	0	9:16	0.562
+750x1334	iPhone SE (gen 3)	0	9:16	0.562
+750x1334	iPhone 6	0	9:16	0.562
+750x1334	iPhone 7	0	9:16	0.562
+750x1334	iPhone 8	0	9:16	0.562
+
+828x1792	iPhone XR	0	9:19.5	0.462
+828x1792	iPhone 11 	0	9:19.5	0.462
+
+1242x2208	iPhone 6+ 	0	9:16	0.562
+1242x2208	iPhone 7+ 	0	9:16	0.562
+1242x2208	iPhone 8+ 	0	9:16	0.562
+
+1125x2436	iPhone 11 Pro 	0	9:19.5	0.462
+1125x2436	iPhone XS 	0	9:19.5	0.462
+1125x2436	iPhone X 	0	9:19.5	0.462
+
+1242x2688	iPhone 11 Pro Max 	0	9:19.5	0.462
+1242x2688	iPhone XS Max 	0	9:19.5	0.462
+
+1080x2340	iPhone 12 mini 	0	9:19.5	0.462
+1080x2340	iPhone 13 mini 	0	9:19.5	0.462
+
+1170x2532	iPhone 13 	0	9:19.5	0.462
+1170x2532	iPhone 12 Pro 	0	9:19.5	0.462
+1170x2532	iPhone 13 	0	9:19.5	0.462
+1170x2532	iPhone 13 Pro 	0	9:19.5	0.462
+1170x2532	iPhone 14 	0	9:19.5	0.462
+
+1284x2778	iPhone 12 Pro Max 	0	9:19.5	0.462
+1284x2778	iPhone 13 Pro Max 	0	9:19.5	0.462
+1284x2778	iPhone 14+	0	9:19.5	0.462
+
+1179x2556	iPhone 14 Pro 	0	9:19.5	0.461
+1179x2556	iPhone 15 	0	9:19.5	0.461
+1179x2556	iPhone 15 Pro 	0	9:19.5	0.461
+
+1290x2796	iPhone 14 Pro Max	0	9:19.5	0.461
+1290x2796	iPhone 15+	0	9:19.5	0.461
+1290x2796	iPhone 15 Pro Max	0	9:19.5	0.461

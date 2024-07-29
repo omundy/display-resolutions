@@ -1,3 +1,15 @@
+:root {
+	--font-size: .8rem;
+	--font-size-label: .8rem;
+	--border-radius: 4px;
+	--range-height: 16px;
+	--range-background-color: #7f7f7f;
+	--range-thumb-color: #696969;
+	--range-slider-color: #cacaca;
+	--range-border-radius: 18px;
+	--range-border: 2px;
+}
+
 html,
 body {
 	margin: 0;
@@ -13,29 +25,30 @@ svg text {
 }
 
 .controls {
-	position: absolute;
+	position: fixed;
 	z-index: 999;
-	background-color: rgba(255, 255, 255, .1);
+	background-color: rgba(0, 0, 0, 0.1);
 	color: #ccc;
-	padding: 5px;
+	padding: .7rem;
 	margin: 12px;
-	border-radius: 3px;
+	border-radius: var(--border-radius);
 }
 
+.controls .mtop {
+	margin-top: .6rem;
+}
 
 .controls h5 {
 	margin: 0;
 	margin-top: 6px;
 	font-weight: normal;
-	font-size: 12px;
+	font-size: var(--font-size);
 }
 
 .controls label {
 	display: inline-block;
-	width: 1.6rem;
 	text-align: left;
-	padding-right: 3px;
-	font-size: 12px;
+	font-size: var(--font-size-label);
 }
 
 .controls .val {
@@ -45,46 +58,32 @@ svg text {
 	/* background-color: transparent; */
 	color: #ccc;
 	padding: 3px;
-	max-width: 1.5rem;
-	text-align: left;
-	margin-bottom: 4px;
-}
-
-
-
-:root {
-	--range-height: 14px;
-	--range-border-radius: 18px;
-	--range-background: #7f7f7f;
-	--range-foreground: #696969;
-	--range-shadow: #cacaca;
-	--range-border: 2px;
+	max-width: 2.25rem;
+	text-align: center;
 }
 
 button {
 	background-color: transparent;
 	border: none;
-	color: var(--range-shadow);
+	color: var(--range-slider-color);
 	padding: 3px 5px;
-	border: 1px solid var(--range-shadow);
+	border: 1px solid var(--range-slider-color);
 	border-radius: .25rem;
 	text-align: center;
 	text-decoration: none;
-	margin: .25rem 0 0 0;
 }
 
 select {
-	background-color: var(--range-background);
+	background-color: var(--range-background-color);
 	border-radius: 1rem;
 	padding: 2px 5px;
 }
 
 
 /* Improve range input
-        Source(s)
-        https://blog.logrocket.com/creating-custom-css-range-slider-javascript-upgrades/ 
-        https://range-input-css.netlify.app/
-        */
+https://blog.logrocket.com/creating-custom-css-range-slider-javascript-upgrades/ 
+https://range-input-css.netlify.app/
+*/
 
 input[type="range"] {
 	/* removing default appearance */
@@ -99,19 +98,20 @@ input[type="range"] {
 	/*  slider progress trick  */
 	overflow: hidden;
 	border-radius: var(--range-border-radius);
+	vertical-align: -.2rem;
 }
 
 /* Track: webkit browsers */
 input[type="range"]::-webkit-slider-runnable-track {
 	height: var(--range-height);
-	background: var(--range-background);
+	background: var(--range-background-color);
 	border-radius: var(--range-border-radius);
 }
 
 /* Track: Mozilla Firefox */
 input[type="range"]::-moz-range-track {
 	height: var(--range-height);
-	background: var(--range-background);
+	background: var(--range-background-color);
 	border-radius: var(--range-border-radius);
 }
 
@@ -123,20 +123,101 @@ input[type="range"]::-webkit-slider-thumb {
 	/* creating a custom design */
 	height: var(--range-height);
 	width: var(--range-height);
-	background-color: var(--range-foreground);
+	background-color: var(--range-thumb-color);
 	border-radius: 50%;
-	border: 2px solid var(--range-shadow);
+	border: 2px solid var(--range-slider-color);
 	/*  slider progress trick  */
-	box-shadow: -407px 0 0 400px var(--range-shadow);
+	box-shadow: -407px 0 0 400px var(--range-slider-color);
 }
 
 /* Thumb: Firefox */
 input[type="range"]::-moz-range-thumb {
 	height: var(--range-height);
 	width: var(--range-height);
-	background-color: var(--range-foreground);
+	background-color: var(--range-thumb-color);
 	border-radius: 50%;
-	border: 1px solid var(--range-shadow);
+	border: 1px solid var(--range-slider-color);
 	/*  slider progress trick  */
-	box-shadow: -407px 0 0 400px var(--range-shadow);
+	box-shadow: -407px 0 0 400px var(--range-slider-color);
+}
+
+
+
+
+
+/* The switch - the box around the slider 
+https://www.w3schools.com/howto/howto_css_switch.asp
+*/
+:root {
+	--switch-height: 20px;
+	--switch-width: 40px;
+	--switch-slider-size: 14px;
+	--switch-slider-padding: 3px;
+	--switch-slider-offset: 18px;
+}
+
+.switch {
+	position: relative;
+	display: inline-block;
+	width: var(--switch-width);
+	height: var(--switch-height);
+	margin-left: .2rem;
+	margin-right: .2rem;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+/* The slider */
+.slider {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: var(--range-thumb-color);
+	-webkit-transition: .4s;
+	transition: .4s;
+}
+
+input:checked+.slider {
+	background-color: var(--range-slider-color);
+}
+
+input:focus+.slider {
+	box-shadow: 0 0 1px var(--range-slider-color);
+}
+
+/* checked */
+.slider:before {
+	position: absolute;
+	content: "";
+	height: var(--switch-slider-size);
+	width: var(--switch-slider-size);
+	left: var(--switch-slider-padding);
+	bottom: var(--switch-slider-padding);
+	background-color: var(--range-slider-color);
+	-webkit-transition: .4s;
+	transition: .4s;
+}
+
+input:checked+.slider:before {
+	background-color: var(--range-thumb-color);
+	-webkit-transform: translateX(var(--switch-slider-offset));
+	-ms-transform: translateX(var(--switch-slider-offset));
+	transform: translateX(var(--switch-slider-offset));
+}
+
+/* Rounded sliders */
+.slider.round {
+	border-radius: 34px;
+}
+
+.slider.round:before {
+	border-radius: 50%;
 }

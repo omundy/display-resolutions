@@ -7,11 +7,6 @@
 
 	<!-- 
     Title: Display Resolutions
-    References: 
-		https://web.archive.org/web/20171108190059/http://www.latenighthacking.com/projects/monitorResolutions.html
-		https://www.david-smith.org/blog/2014/01/09/visualizing-display-resolutions/
-		https://www.logicalincrements.com/resolution
-		https://en.wikipedia.org/wiki/List_of_common_display_resolutions
     Author: Owen Mundy
     Date: 2024
     License: MIT
@@ -24,12 +19,27 @@
 	<main>
 		<form id="controls" class="controls">
 			<div>
+				<label for="screens">screens</label>
+				<label class="switch">
+					<input type="checkbox" id="screens">
+					<span class="slider round"></span>
+				</label>
+				<label for="mobile">mobile</label>
+				<label class="switch">
+					<input type="checkbox" id="mobile">
+					<span class="slider round"></span>
+				</label>
+				<label for="rotate">rotate</label>
+				<label class="switch">
+					<input type="checkbox" id="rotate">
+					<span class="slider round"></span>
+				</label>
+			</div>
+			<div class="mtop">
 				<label for="scale">scale</label>
 				<input type="range" id="scale" min=".1" max="2.0" step="0.01" value="1">
 				<input type="text" id="scaleDisplay" value="1" class="val">
-			</div>
-			<div>
-				<button class="saveSVG">download</button>
+				<button class="saveSVG" style="margin-left: 1rem;">download</button>
 			</div>
 		</form>
 		<!-- SVG height always fits the element, while viewbox 100 100 makes all numbers relative to % -->
@@ -38,68 +48,125 @@
 
 	<script type="module">
 
+		// data
 		import { PALETTE_ARR } from "./assets/js/palette.js";
 		import { tsv } from "https://cdn.skypack.dev/d3-fetch@3";
-		let data = await tsv("/displays.tsv");
-		console.log(data);
+		let data = [], filename = "";
+		let screensData = await tsv("/assets/data/screens.tsv");
+		let mobileData = await tsv("/assets/data/mobile.tsv");
+		// console.log(screensData, mobileData);
 
-		let scale = 1;
+		screensData = await removeEmptyRows(screensData);
+		mobileData = await removeEmptyRows(mobileData);
+		async function removeEmptyRows(arr) {
+			for (let i = arr.length - 1; i >= 0; i--) {
+				if (arr[i].pixels == "")
+					arr.splice(i, 1);
+			}
+			return arr;
+		}
+		// console.log(PALETTE_ARR, screensData.length, mobileData);
+
+		// references
 		const svg = document.querySelector('svg');
 		const controlsEle = document.querySelector('#controls');
 		const scaleEle = document.querySelector('#scale');
 		const scaleDisplayEle = document.querySelector('#scaleDisplay');
-		scaleEle.addEventListener("input", (e) => {
-			scale = e.target.value;
-			scaleDisplay.value = scale;
-			generate();
-		})
+
+		let scale = 1,
+			checked = {
+				screens: true,
+				mobile: true,
+				rotate: false
+			}
+		const checkboxes = document.querySelectorAll('input[type=checkbox]');
+		checkboxes.forEach((cb) => {
+			if (cb.id != "rotate")
+				cb.checked = true;
+			cb.addEventListener("change", function (e) {
+				// console.log(e.target.id, e.target.checked);
+				checked[e.target.id] = e.target.checked;
+				generate();
+			}, false);
+		});
+
+		function updateReferences() {
+			data = [];
+			filename = "resolutions";
+			if (checked.screens) {
+				for (let i = 0; i < screensData.length; i++) {
+					data.push(screensData[i])
+				}
+				filename += "-screens"
+			}
+			if (checked.mobile) {
+				for (let i = 0; i < mobileData.length; i++) {
+					data.push(mobileData[i])
+				}
+				filename += "-mobile"
+			}
+			if (checked.rotate) filename += "-rotated";
+			filename += ".svg";
+		}
 
 		function generate() {
 			document.body.style.backgroundColor = "#212121";
+
+			updateReferences();
+			// console.log(checked, data)
 
 			let output = '';
 			let winW = window.innerWidth,
 				winH = window.innerHeight,
 				colorIndex = 0;
 			for (let i = data.length; i > 0; i--) {
-				if (!data[i]) continue;
-				let w = Number(data[i].pixels.split("x")[0]),
-					h = Number(data[i].pixels.split("x")[1]),
-					x = 0,
-					y = 0,
-					fontSize = 20 * scale,
-					color = PALETTE_ARR[colorIndex++] // sequential
-					// color = PALETTE_ARR[Math.floor(Math.random() * PALETTE_ARR.length)] // random
-					;
-				let currentW = w * scale,
-					currentH = h * scale;
+				if (!data[i] || !data[i].pixels) continue;
 
+				// rotation
+				let [w, h] = data[i].pixels.split("x");
+				if (checked.rotate) [h, w] = data[i].pixels.split("x");
+
+				let x = 0,
+					y = 0,
+					fontSize = 20 * scale;
+				let currentW = w * scale,
+					currentH = h * scale,
+					color = getColor(colorIndex++);
 				if (colorIndex >= PALETTE_ARR.length)
 					colorIndex = 0;
 				// console.log("🦄", "w,h", w, h, "x,y", x, y, "scale", scale, colorIndex, color);
 
-				output += `<rect
-							width="${currentW}" height="${currentH}" x="0" y="0" 
-							fill="${color}" stroke="none" opacity=".6"
-							 />`
-				output += `<text 
-							width="200" height="30" 
-							x="${currentW}" y="${currentH}" 
-							text-anchor="end"
+				output += `<rect width="${currentW}" height="${currentH}" x="0" y="0" 
+							fill="${color}" stroke="none" opacity=".6" />`;
+				output += `<text width="200" height="30" x="${currentW}" y="${currentH}" 
 							fill="#fff" stroke="none"
-							font-size="${fontSize}"
+							font-size="${fontSize}" text-anchor="end"
 							transform ="translate(${x - 4},${y - 4})">${data[i].name} ${data[i].aspectRatio} ${w}x${h}</text>`;
 			}
-			// display
 			svg.innerHTML = output;
 		}
 
-		// listeners
-		window.addEventListener("load", generate);
-		window.addEventListener("resize", generate);
+		function getColor(index) {
+			return PALETTE_ARR[index] // sequential
+			// return PALETTE_ARR[Math.floor(Math.random() * PALETTE_ARR.length)] // random
+		}
 
+		generate();
 
-		function download(filename, textInput) {
+		scaleEle.addEventListener("input", (e) => {
+			scale = e.target.value;
+			scaleDisplay.value = scale;
+			generate();
+		});
+		// reset scroll
+		window.onbeforeunload = function () {
+			window.scrollTo(0, 0);
+		}
+
+		/**
+		 *	Download a string as file 
+		 */
+		function downloadStringAsFile(filename, textInput) {
 			var element = document.createElement('a');
 			element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(textInput));
 			element.setAttribute('download', filename);
@@ -112,7 +179,7 @@
 			e.preventDefault();
 			let str = `<?xml version="1.0" encoding="utf-8" ?>${svg.outerHTML}`;
 			// console.log("str", str);
-			download("displays.svg", str);
+			downloadStringAsFile(filename, str);
 		}, false);
 
 	</script>
