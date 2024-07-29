@@ -52,8 +52,8 @@
 		import { PALETTE_ARR } from "./assets/js/palette.js";
 		import { tsv } from "https://cdn.skypack.dev/d3-fetch@3";
 		let data = [], filename = "";
-		let screensData = await tsv("/assets/data/screens.tsv");
-		let mobileData = await tsv("/assets/data/mobile.tsv");
+		let screensData = await tsv("./assets/data/screens.tsv");
+		let mobileData = await tsv("./assets/data/mobile.tsv");
 		// console.log(screensData, mobileData);
 
 		screensData = await removeEmptyRows(screensData);
@@ -183,7 +183,7 @@
 		}, false);
 
 	</script>
-	
+
 
 </body>
 </html>
