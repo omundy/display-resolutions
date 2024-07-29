@@ -1,6 +1,9 @@
 # Display Resolutions
 
-<img src="screenshot.png" width="800">
+<!-- <img src="screenshot.png" width="700"> -->
+
+<img src="assets/img/resolutions-screens.png" width="700">
+<img src="assets/img/resolutions-mobile.png" width="700">
 
 ## References
 
@@ -10,3 +13,5 @@
 - https://www.david-smith.org/blog/2014/01/09/visualizing-display-resolutions/
 - https://www.logicalincrements.com/resolution
 - https://en.wikipedia.org/wiki/List_of_common_display_resolutions
+- https://www.digitalrebellion.com/webapps/aspectcalc
+- https://toolstud.io/photo/megapixel.php
