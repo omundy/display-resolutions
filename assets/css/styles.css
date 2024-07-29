@@ -4,8 +4,8 @@
 	--border-radius: 4px;
 	--range-height: 16px;
 	--range-background-color: #7f7f7f;
-	--range-thumb-color: #696969;
-	--range-slider-color: #cacaca;
+	--range-thumb-color: #939393;
+	--range-slider-color: #d8d8d8;
 	--range-border-radius: 18px;
 	--range-border: 2px;
 }
@@ -53,12 +53,11 @@ svg text {
 
 .controls .val {
 	border: 0;
-	border-radius: 10%;
-	background-color: rgba(255, 255, 255, .1);
-	/* background-color: transparent; */
+	border-radius: .35rem;
+	background-color: var(--range-background-color);
 	color: #ccc;
 	padding: 3px;
-	max-width: 2.25rem;
+	max-width: 2rem;
 	text-align: center;
 }
 
@@ -68,7 +67,7 @@ button {
 	color: var(--range-slider-color);
 	padding: 3px 5px;
 	border: 1px solid var(--range-slider-color);
-	border-radius: .25rem;
+	border-radius: .35rem;
 	text-align: center;
 	text-decoration: none;
 }
@@ -180,7 +179,7 @@ https://www.w3schools.com/howto/howto_css_switch.asp
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: var(--range-thumb-color);
+	background-color: var(--range-background-color);
 	-webkit-transition: .4s;
 	transition: .4s;
 }
