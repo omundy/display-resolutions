@@ -13,5 +13,12 @@
 - https://www.david-smith.org/blog/2014/01/09/visualizing-display-resolutions/
 - https://www.logicalincrements.com/resolution
 - https://en.wikipedia.org/wiki/List_of_common_display_resolutions
-- https://www.digitalrebellion.com/webapps/aspectcalc
 - https://toolstud.io/photo/megapixel.php
+- https://www.ios-resolution.com/
+
+
+## Calculators
+
+- https://insaneimpact.com/aspect-ratio-calculator/
+- https://aspectratiocalculator.com/
+- https://www.digitalrebellion.com/webapps/aspectcalc

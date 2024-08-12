@@ -1,5 +1,8 @@
-pixels	name	aspectFraction	aspectRatio	w2h	megapixels
+pixels	name	aspectFraction	aspectRatio	w2h	megapixels	releaseDate
 
+
+410x502	Apple Watch Ultra 2	0	0.82:1	0.816	0	2023-09-22
+396x484	Apple Watch Series 9	0	0.82:1	0.818	0	2023-09-22
 
 320x480	iPhone 3Gs 	0	3:4	.66
 640x960	iPhone 4 	0	3:4	.66
@@ -41,9 +44,15 @@ pixels	name	aspectFraction	aspectRatio	w2h	megapixels
 1284x2778	iPhone 14+	0	9:19.5	0.462
 
 1179x2556	iPhone 14 Pro 	0	9:19.5	0.461
-1179x2556	iPhone 15 	0	9:19.5	0.461
-1179x2556	iPhone 15 Pro 	0	9:19.5	0.461
+1179x2556	iPhone 15 	0	9:19.5	0.461	0	2023-09-22
+1179x2556	iPhone 15 Pro 	0	9:19.5	0.461	0	2023-09-22
 
 1290x2796	iPhone 14 Pro Max	0	9:19.5	0.461
-1290x2796	iPhone 15+	0	9:19.5	0.461
-1290x2796	iPhone 15 Pro Max	0	9:19.5	0.461
+1290x2796	iPhone 15+	0	9:19.5	0.461	0	2023-09-22
+1290x2796	iPhone 15 Pro Max	0	9:19.5	0.461	0	2023-09-22
+
+
+1668x2388	iPad Pro (6th gen 11")	0	3.48:1	0.75	0	2022-10-26
+2048x2732	iPad Pro (6th gen 12.9")	0	0.75:1	0.75	0	2022-10-26
+
+
